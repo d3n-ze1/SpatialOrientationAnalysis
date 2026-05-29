@@ -7,7 +7,7 @@ Python tool for analyzing data from the Spatial Orientation Test (SOT).
 - Reads participant .txt files
 - Extracts AngularError values
 - Calculates mean angular error per participant
-- Exports results to CSV
+- Sorts and Exports results to CSV
 
 ## Usage
 
