@@ -1,0 +1,43 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# =========================
+# IDEs / Editors
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Operating System Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Project Data
+# =========================
+
+# Raw participant files
+data/*
+
+# Keep folder structure
+!data/.gitkeep
+
+# Generated outputs
+output/*
+
+# Keep folder structure
+!output/.gitkeep
+
+# Logs
+*.log
