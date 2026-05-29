@@ -18,7 +18,7 @@ for file in DATA_DIR.glob("*.txt"):
     # Subject number from first line
     first_line = lines[0].strip().split()
     if len(first_line) == 2:
-        participant = first_line[-1]
+        participant = int(first_line[-1])
 
     # Work on only Lines 7–15
     for line in lines[6:15]:
@@ -41,6 +41,9 @@ for file in DATA_DIR.glob("*.txt"):
             participant,
             round(mean_error, 2)
         ])
+
+# Sort by participant number
+results.sort(key=lambda x: x[0])
 
 OUTPUT_FILE.parent.mkdir(exist_ok=True)
 
