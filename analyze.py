@@ -8,34 +8,30 @@ results = []
 
 for file in DATA_DIR.glob("*.txt"):
 
+    with open(file, "r", encoding="utf-8") as f:
+        # Get all lines
+        lines = f.readlines()
+
     participant = None
     errors = []
 
-    with open(file, "r", encoding="utf-8") as f:
-        for line in f:
+    # Subject number from first line
+    first_line = lines[0].strip().split()
+    if len(first_line) == 2:
+        participant = first_line[-1]
 
-            parts = line.strip().split()
+    # Work on only Lines 7–15
+    for line in lines[6:15]:
 
-            if not parts:
-                continue
+        parts = line.strip().split()
 
-            # Subject line
-            if parts[0] == "Subject" and len(parts) == 2:
-                participant = parts[1]
-                continue
+        if not parts:
+            continue
 
-            # Trial rows begin with participant number
-            if parts[0].isdigit():
-
-                try:
-                    target_angle = float(parts[-3])
-                    estimate_angle = float(parts[-2])
-                    angular_error = float(parts[-1])
-
-                    errors.append(angular_error)
-
-                except (ValueError, IndexError):
-                    pass
+        try:
+            errors.append(float(parts[-1]))
+        except ValueError:
+            pass
 
     if participant and errors:
 
